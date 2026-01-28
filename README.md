@@ -4,27 +4,20 @@ CampusMart is a university-focused buy and sell platform developed as a major fu
 This repository contains the React-based frontend of the application.
 
 🚀 Frontend Tech Stack
-
 React.js (with Vite)
-
 JavaScript
-
 CSS (Plain CSS)
-
 React Router DOM
 
 
 🧾 Prerequisites
-
 Make sure you have the following installed on your system:
-
 Node.js (version 18 or above)
-
 npm (comes with Node.js)
-
 Git
 
-Check versions:
+
+> Check versions:
 node -v
 npm -v
 git --version
