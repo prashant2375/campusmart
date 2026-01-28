@@ -1,83 +1,106 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
+import "./AddProduct.css";
 
 function AddProduct() {
-  const [formData, setFormData] = useState({
-    name: "",
-    category: "",
-    price: "",
-    description: "",
-  });
+  const imageInputRef = useRef(null);
+  const [imagePreview, setImagePreview] = useState(null);
+  const [videoPreview, setVideoPreview] = useState(null);
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+  const handleImageClick = () => {
+    imageInputRef.current.click();
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Product Submitted:", formData);
-    // backend_integration
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) setImagePreview(URL.createObjectURL(file));
+  };
+
+  const handleVideoChange = (e) => {
+    const file = e.target.files[0];
+    if (file) setVideoPreview(URL.createObjectURL(file));
   };
 
   return (
     <div className="page">
-      <h1>Sell an Item</h1>
-      <p>Fill in the details to list your product.</p>
+      {/* WHITE CARD START */}
+      <div className="product-form">
+        <div className="text_center_prop">
+          <h1>Sell an Item</h1>
+          <p>Add product details to sell within campus</p>
+        </div>
 
-      <form className="product-form" onSubmit={handleSubmit}>
+        {/* IMAGE PICKER INSIDE CARD */}
+        <div className="image-picker">
+          <div className="image-circle" onClick={handleImageClick}>
+            {imagePreview ? (
+              <img src={imagePreview} alt="Product" />
+            ) : (
+              <span className="placeholder-text">Add Image</span>
+            )}
+            <div className="edit-icon">✏️</div>
+          </div>
+
+          <input
+            type="file"
+            accept="image/*"
+            capture="environment"
+            ref={imageInputRef}
+            onChange={handleImageChange}
+            hidden
+          />
+        </div>
+
+        {/* FORM FIELDS */}
         <div className="form-group">
           <label>Product Name</label>
-          <input
-            type="text"
-            name="name"
-            placeholder="Enter product name"
-            value={formData.name}
-            onChange={handleChange}
-          />
+          <input type="text" placeholder="Enter product name" />
         </div>
 
         <div className="form-group">
           <label>Category</label>
-          <select
-            name="category"
-            value={formData.category}
-            onChange={handleChange}
-          >
+          <select>
             <option value="">Select category</option>
-            <option value="Books">Books</option>
-            <option value="Electronics">Electronics</option>
-            <option value="Hostel Items">Hostel Items</option>
+            <option>Books</option>
+            <option>Electronics</option>
+            <option>Hostel Items</option>
+            <option>Stationery</option>
+            <option>Others</option>
+          </select>
+        </div>
+
+        <div className="form-group">
+          <label>Source of Item</label>
+          <select>
+            <option value="">Select source</option>
+            <option>Created by me</option>
+            <option>Bought</option>
+            <option>Rented</option>
+            <option>Second-hand</option>
           </select>
         </div>
 
         <div className="form-group">
           <label>Price (₹)</label>
-          <input
-            type="number"
-            name="price"
-            placeholder="Enter price"
-            value={formData.price}
-            onChange={handleChange}
-          />
+          <input type="number" placeholder="Enter price" />
         </div>
 
         <div className="form-group">
           <label>Description</label>
-          <textarea
-            name="description"
-            placeholder="Describe your product"
-            rows="4"
-            value={formData.description}
-            onChange={handleChange}
-          ></textarea>
+          <textarea rows="4" placeholder="Describe your product"></textarea>
         </div>
 
-        <button type="submit" className="submit-btn">
-          Add Product
-        </button>
-      </form>
+        <div className="form-group">
+          <label>Product Video (optional)</label>
+          <input type="file" accept="video/*" onChange={handleVideoChange} />
+        </div>
+
+        {videoPreview && (
+          <video src={videoPreview} controls className="video-preview" />
+        )}
+
+        <button className="submit-btn">Sell Item</button>
+      </div>
+      {/* WHITE CARD END */}
     </div>
   );
 }

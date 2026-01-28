@@ -19,6 +19,7 @@ body {
   max-width: 1200px;
   margin: 40px auto;
   padding: 0 20px;
+  
 }
 
 /* Headings */
@@ -53,15 +54,19 @@ a {
   margin-top: 30px;
 }
 
+.text_center_prop{
+  text-align:center;
+}
 
 .product-form {
   background-color: #ffffff;
   max-width: 600px;
-  margin-top: 30px;
+  margin: 30px auto;   /* centers the card */
   padding: 25px;
   border-radius: 10px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
 }
+
 
 .product-form .form-group {
   margin-bottom: 16px;

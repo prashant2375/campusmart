@@ -1,0 +1,60 @@
+/* Image picker container */
+.image-picker {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+/* Circular image */
+.image-circle {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 2px dashed #cbd5e1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  background-color: #f8fafc;
+  overflow: visible; /* IMPORTANT */
+}
+
+/* Image preview */
+.image-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Placeholder text */
+.placeholder-text {
+  color: #64748b;
+  font-size: 14px;
+}
+
+/* Pencil icon – ON BORDER */
+.edit-icon {
+  position: absolute;
+  bottom: -8px;      /* pushes it outside */
+  right: -8px;       /* pushes it outside */
+  width: 34px;
+  height: 34px;
+  background-color: #2563eb;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  border: 3px solid white; /* makes it clean on border */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Video preview */
+.video-preview {
+  width: 100%;
+  margin-top: 15px;
+  border-radius: 8px;
+}
