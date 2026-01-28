@@ -1,26 +1,29 @@
-import './App.css'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
 
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ProductList from "./pages/ProductList";
 import AddProduct from "./pages/AddProduct";
 import AdminDashboard from "./pages/AdminDashboard";
+import MyProducts from "./pages/MyProducts";
+
 
 function App() {
   return (
     <BrowserRouter>
+      <Navbar />
+
       <Routes>
         <Route path="/" element={<ProductList />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/add-product" element={<AddProduct />} />
+        <Route path="/my-products" element={<MyProducts />} />
         <Route path="/admin" element={<AdminDashboard />} />
       </Routes>
     </BrowserRouter>
   );
 }
-
-
 
 export default App;
