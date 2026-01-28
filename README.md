@@ -17,7 +17,7 @@ npm (comes with Node.js)
 Git
 
 
-> Check versions:
+Check versions:
 node -v
 npm -v
 git --version
@@ -31,17 +31,24 @@ cd campusmart
 
 
 ▶️ Run the Frontend Locally
+
 1️⃣ Navigate to frontend folder
+
 cd frontend
 
+
 2️⃣ Install dependencies
+
 npm install
 
+
 3️⃣ Start development server
+
 npm run dev
 
 
 🌐 Access the Application
 
 After running the above command, open your browser and visit:
+
 http://localhost:5173
