@@ -24,7 +24,7 @@ git --version
 
 
 📥 Clone the Repository
-git clone https://github.com/<your-username>/campusmart.git
+git clone https://github.com/prashant2375/campusmart.git
 
 Navigate into the project:
 cd campusmart
