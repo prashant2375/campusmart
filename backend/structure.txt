@@ -1,0 +1,52 @@
+backend/
+├── src/
+│   ├── config/
+│   │   └── db.js
+│   ├── models/
+│   │   ├── User.js
+│   │   └── Product.js
+│   ├── routes/
+│   │   ├── authRoutes.js
+│   │   ├── productRoutes.js
+│   │   └── chatbotRoutes.js   (for later)
+│   ├── controllers/
+│   │   ├── authController.js
+│   │   ├── productController.js
+│   │   └── chatbotController.js  (for later)
+│   ├── middleware/
+│   │   ├── authMiddleware.js
+│   │   └── uploadMiddleware.js
+│   └── app.js
+├── uploads/
+├── server.js
+├── package.json
+└── .env
+
+
+backend/
+├── config/
+│   └── db.js
+├── controllers/
+│   ├── authController.js
+│   ├── productController.js
+│   └── chatbotController.js
+├── routes/
+│   ├── authRoutes.js
+│   ├── productRoutes.js
+│   └── chatbotRoutes.js
+├── middleware/
+│   ├── authMiddleware.js
+│   └── uploadMiddleware.js
+├── uploads/
+├── server.js
+└── package.json
+
+backend/
+├── config/
+│   └── db.js
+├── routes/
+├── controllers/
+├── middleware/
+├── uploads/
+├── server.js
+└── .env

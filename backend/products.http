@@ -1,0 +1,32 @@
+### Add Product (with image)
+POST http://localhost:5000/api/products
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6InVzZXIiLCJpYXQiOjE3Njk2NTk2MzIsImV4cCI6MTc2OTc0NjAzMn0.uAowm1uFWbay6kToZgdKSJp_Zzm20oBqECcgfIl_7Qs
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="name"
+
+Scientific Calculator
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="category"
+
+Electronics
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="source"
+
+Bought
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="price"
+
+500
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="description"
+
+Casio scientific calculator
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="image"; filename="calc.jpg"
+Content-Type: image/jpeg
+
+< ./test-files/calc.jpg
+------WebKitFormBoundary7MA4YWxkTrZu0gW--

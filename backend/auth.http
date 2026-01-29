@@ -1,0 +1,24 @@
+### Register User
+POST http://localhost:5000/api/auth/register
+Content-Type: application/json
+
+{
+  "name": "Test User",
+  "email": "user@campus.com",
+  "password": "user123"
+}
+
+
+### Login User
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "user@campus.com",
+  "password": "user123"
+}
+
+
+
+
+# eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6InVzZXIiLCJpYXQiOjE3Njk2NTk2MzIsImV4cCI6MTc2OTc0NjAzMn0.uAowm1uFWbay6kToZgdKSJp_Zzm20oBqECcgfIl_7Qs
