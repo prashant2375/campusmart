@@ -6,7 +6,7 @@ const API = axios.create({
 
 // Attach token automatically
 API.interceptors.request.use((req) => {
-  const token = localStorage.getItem("campusmart_token");
+  const token = localStorage.getItem("campusmart_token"); // ✅ consistent
   if (token) {
     req.headers.Authorization = `Bearer ${token}`;
   }

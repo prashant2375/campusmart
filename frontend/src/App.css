@@ -40,3 +40,31 @@
 .read-the-docs {
   color: #888;
 }
+
+/* .approval-caption {
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  color: #ff9800;
+  font-weight: 500;
+}
+.sell-item-card {
+  border: 2px dashed #aaa;
+  border-radius: 10px;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: #fafafa;
+  transition: 0.3s;
+}
+
+.sell-item-card:hover {
+  background-color: #f0f0f0;
+}
+
+.sell-item-content {
+  text-align: center;
+  color: #555;
+} */

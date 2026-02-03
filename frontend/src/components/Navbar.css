@@ -1,50 +1,112 @@
+/* ===== NAVBAR WRAPPER ===== */
 .navbar {
-  background-color: #ffffff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  background: linear-gradient(135deg, #1f2933, #2b3440);
+  padding: 14px 0;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 100;
 }
 
+/* ===== CONTAINER ===== */
 .navbar-container {
   max-width: 1200px;
   margin: auto;
-  padding: 14px 20px;
+  padding: 0 24px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 }
 
+/* ===== LOGO ===== */
 .logo {
-  color: #2563eb;
-  font-size: 22px;
-  font-weight: bold;
+  color: #f9fafb;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  cursor: pointer;
 }
 
+/* ===== LINKS ===== */
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 20px;
   align-items: center;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
 }
 
+.nav-links li {
+  position: relative;
+}
+
+/* ===== LINK STYLE ===== */
 .nav-links a {
+  color: #d1d5db;
   text-decoration: none;
-  color: #1f2937;
+  font-size: 15px;
   font-weight: 500;
+  padding: 6px 4px;
+  transition: color 0.2s ease;
+}
+
+/* Hover underline effect */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  background: #9ca3af;
+  transition: width 0.25s ease;
 }
 
 .nav-links a:hover {
-  color: #2563eb;
+  color: #f9fafb;
 }
 
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* ===== BUTTON (REGISTER / LOGOUT) ===== */
 .btn {
-  background-color: #2563eb;
-  color: white !important;
-  padding: 6px 14px;
-  border-radius: 6px;
+  background: linear-gradient(135deg, #4b5563, #374151);
+  color: #f9fafb;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
 }
 
+/* Button hover */
 .btn:hover {
-  background-color: #1d4ed8;
+  background: linear-gradient(135deg, #6b7280, #4b5563);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45);
+  transform: translateY(-1px);
+}
+
+/* ===== CHATBOT ICON TWEAK ===== */
+.nav-links a[href="/chatbot"] {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .navbar-container {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }

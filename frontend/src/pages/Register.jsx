@@ -2,8 +2,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Auth.css";
 
-import API from "../api/api";
 import { useNavigate } from "react-router-dom";
+import API from "../api/api";
 
 
 function Register() {

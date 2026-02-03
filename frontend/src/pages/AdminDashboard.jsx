@@ -1,59 +1,90 @@
-import { useState } from "react";
+import API from "../api/api";
+
+import { useEffect, useState } from "react";
+
 
 function AdminDashboard() {
-  const [products, setProducts] = useState([
-    {
-      id: 1,
-      name: "Engineering Mathematics Book",
-      seller: "Rahul",
-      price: 350,
-      status: "Pending",
-    },
-    {
-      id: 2,
-      name: "Scientific Calculator",
-      seller: "Amit",
-      price: 800,
-      status: "Pending",
-    },
-  ]);
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const handleApprove = (id) => {
-    const updated = products.map((product) =>
-      product.id === id
-        ? { ...product, status: "Approved" }
-        : product
-    );
-    setProducts(updated);
+  useEffect(() => {
+    API.get("/products")
+      .then((res) => {
+        setProducts(res.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
+        setLoading(false);
+      });
+  }, []);
+
+  const handleApprove = async (id) => {
+    try {
+      await API.put(`/products/${id}/approve`);
+      setProducts((prev) =>
+        prev.map((p) =>
+          p.id === id ? { ...p, status: "approved" } : p
+        )
+      );
+    } catch {
+      alert("Approval failed");
+    }
   };
 
-  const handleReject = (id) => {
-    const updated = products.filter(
-      (product) => product.id !== id
-    );
-    setProducts(updated);
+  const handleDelete = async (id) => {
+    if (!window.confirm("Are you sure you want to delete this product?"))
+      return;
+
+    try {
+      await API.delete(`/products/${id}`);
+      setProducts((prev) => prev.filter((p) => p.id !== id));
+    } catch {
+      alert("Delete failed");
+    }
   };
+
+  if (loading) return <p className="loading">Loading...</p>;
 
   return (
-    <div className="page">
-      <h1>Admin Dashboard</h1>
-      <p>Manage product listings submitted by users.</p>
+    <div className="admin-page">
+      <h1 className="admin-title">Admin Dashboard</h1>
+      <p className="admin-subtitle">
+        Review and approve products submitted by users
+      </p>
 
       {products.length === 0 ? (
-        <p>No pending products.</p>
+        <p>No products found.</p>
       ) : (
-        <div className="admin-product-list">
+        <div className="admin-grid">
           {products.map((product) => (
-            <div key={product.id} className="admin-product-card">
-              <div>
-                <h3>{product.name}</h3>
-                <p>Seller: {product.seller}</p>
-                <p>₹ {product.price}</p>
-                <p>Status: {product.status}</p>
-              </div>
+            <div key={product.id} className="admin-card">
+              {product.image_url && (
+                <img
+                  src={`http://localhost:5000/${product.image_url}`}
+                  alt={product.name}
+                  className="product-img"
+                />
+              )}
 
-              <div className="admin-actions">
-                {product.status === "Pending" && (
+              <h3>{product.name}</h3>
+              <p className="price">₹ {product.price}</p>
+              <p className="category">{product.category}</p>
+
+              <span
+                className={`status ${
+                  product.status === "approved"
+                    ? "approved"
+                    : "pending"
+                }`}
+              >
+                {product.status === "approved"
+                  ? "Approved"
+                  : "Pending"}
+              </span>
+
+              <div className="actions">
+                {product.status !== "approved" && (
                   <button
                     className="approve-btn"
                     onClick={() => handleApprove(product.id)}
@@ -61,9 +92,10 @@ function AdminDashboard() {
                     Approve
                   </button>
                 )}
+
                 <button
-                  className="reject-btn"
-                  onClick={() => handleReject(product.id)}
+                  className="delete-btn"
+                  onClick={() => handleDelete(product.id)}
                 >
                   Delete
                 </button>

@@ -1,27 +1,35 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import API from "../api/api";
 
 function MyProducts() {
-  const [products, setProducts] = useState([
-    {
-      id: 1,
-      name: "Engineering Mathematics Book",
-      price: 350,
-      category: "Books",
-    },
-    {
-      id: 2,
-      name: "Scientific Calculator",
-      price: 800,
-      category: "Electronics",
-    },
-  ]);
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const handleDelete = (id) => {
-    const updatedProducts = products.filter(
-      (product) => product.id !== id
-    );
-    setProducts(updatedProducts);
+  // 🔥 FETCH MY PRODUCTS
+  useEffect(() => {
+    API.get("/products/mine")
+      .then((res) => {
+        setProducts(res.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
+        setLoading(false);
+      });
+  }, []);
+
+  // 🔥 DELETE PRODUCT
+  const handleDelete = async (id) => {
+    try {
+      await API.delete(`/products/${id}`);
+      setProducts(products.filter((p) => p.id !== id));
+    } catch (err) {
+      console.error(err);
+      alert("Failed to delete product");
+    }
   };
+
+  if (loading) return <p>Loading...</p>;
 
   return (
     <div className="page">
@@ -38,6 +46,21 @@ function MyProducts() {
                 <h3>{product.name}</h3>
                 <p>{product.category}</p>
                 <p>₹ {product.price}</p>
+                
+                {product.status !== "approved" && (
+  <small className="approval-caption">
+    ⏳ Waiting for admin approval
+  </small>
+)}
+
+
+                {product.image_url && (
+                  <img
+                    src={`http://localhost:5000/${product.image_url}`}
+                    alt={product.name}
+                    width="120"
+                  />
+                )}
               </div>
 
               <div className="actions">

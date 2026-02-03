@@ -1,8 +1,6 @@
 import { useRef, useState } from "react";
-import "./AddProduct.css";
 import API from "../api/api";
-
-
+import "./AddProduct.css";
 
 function AddProduct() {
   const [formData, setFormData] = useState({
@@ -13,18 +11,14 @@ function AddProduct() {
     description: "",
   });
 
-
-
   const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
+  const [showApprovalPopup, setShowApprovalPopup] = useState(false);
 
   const imageInputRef = useRef(null);
-  const [imagePreview, setImagePreview] = useState(null);
-
-  // const [videoPreview, setVideoPreview] = useState(null);
   const videoInputRef = useRef(null);
-  const [videoPreview, setVideoPreview] = useState(null);
 
+  const [imagePreview, setImagePreview] = useState(null);
+  const [videoPreview, setVideoPreview] = useState(null);
 
   const handleImageClick = () => {
     imageInputRef.current.click();
@@ -48,20 +42,15 @@ function AddProduct() {
   };
 
   const handleSubmit = async () => {
-    console.log("Sell Item clicked");
-
     setError("");
-    setSuccess("");
 
     if (!imageInputRef.current?.files[0]) {
       setError("Please upload a product image");
-      console.log("Validation failed: image");
       return;
     }
 
     if (!formData.name || !formData.category || !formData.price) {
       setError("Please fill all required fields");
-      console.log("Validation failed: fields");
       return;
     }
 
@@ -78,25 +67,16 @@ function AddProduct() {
         data.append("image", imageInputRef.current.files[0]);
       }
 
-      // if (videoPreview) {
-      //   const videoInput = document.querySelector(
-      //     'input[type="file"][accept="video/*"]'
-      //   );
-      //   if (videoInput?.files[0]) {
-      //     data.append("video", videoInput.files[0]);
-      //   }
-      // }
-
       if (videoInputRef.current?.files[0]) {
         data.append("video", videoInputRef.current.files[0]);
       }
 
-
       await API.post("/products", data);
 
-      setSuccess("Product added successfully. Awaiting admin approval.");
+      // ✅ SHOW POPUP
+      setShowApprovalPopup(true);
 
-      // Reset form
+      // ✅ RESET FORM
       setFormData({
         name: "",
         category: "",
@@ -104,6 +84,7 @@ function AddProduct() {
         price: "",
         description: "",
       });
+
       setImagePreview(null);
       setVideoPreview(null);
       imageInputRef.current.value = null;
@@ -114,17 +95,15 @@ function AddProduct() {
     }
   };
 
-
   return (
     <div className="page">
-      {/* WHITE CARD START */}
       <div className="product-form">
         <div className="text_center_prop">
           <h1>Sell an Item</h1>
           <p>Add product details to sell within campus</p>
         </div>
 
-        {/* IMAGE PICKER INSIDE CARD */}
+        {/* IMAGE PICKER */}
         <div className="image-picker">
           <div className="image-circle" onClick={handleImageClick}>
             {imagePreview ? (
@@ -142,30 +121,22 @@ function AddProduct() {
             onChange={handleImageChange}
             hidden
           />
-
-
         </div>
 
-        {/* FORM FIELDS */}
+        {/* FORM */}
         <div className="form-group">
           <label>Product Name</label>
           <input
             type="text"
             name="name"
-            placeholder="Enter product name"
             value={formData.name}
             onChange={handleChange}
           />
         </div>
 
-
         <div className="form-group">
           <label>Category</label>
-          <select
-            name="category"
-            value={formData.category}
-            onChange={handleChange}
-          >
+          <select name="category" value={formData.category} onChange={handleChange}>
             <option value="">Select category</option>
             <option>Books</option>
             <option>Electronics</option>
@@ -173,23 +144,17 @@ function AddProduct() {
             <option>Stationery</option>
             <option>Others</option>
           </select>
-
         </div>
 
         <div className="form-group">
           <label>Source of Item</label>
-          <select
-            name="source"
-            value={formData.source}
-            onChange={handleChange}
-          >
+          <select name="source" value={formData.source} onChange={handleChange}>
             <option value="">Select source</option>
             <option>Created by me</option>
             <option>Bought</option>
             <option>Rented</option>
             <option>Second-hand</option>
           </select>
-
         </div>
 
         <div className="form-group">
@@ -197,11 +162,9 @@ function AddProduct() {
           <input
             type="number"
             name="price"
-            placeholder="Enter price"
             value={formData.price}
             onChange={handleChange}
           />
-
         </div>
 
         <div className="form-group">
@@ -209,22 +172,14 @@ function AddProduct() {
           <textarea
             rows="4"
             name="description"
-            placeholder="Describe your product"
             value={formData.description}
             onChange={handleChange}
           />
-
         </div>
 
         <div className="form-group">
           <label>Product Video (optional)</label>
-          <input
-            type="file"
-            accept="video/*"
-            ref={videoInputRef}
-            onChange={handleVideoChange}
-          />
-
+          <input type="file" accept="video/*" ref={videoInputRef} onChange={handleVideoChange} />
         </div>
 
         {videoPreview && (
@@ -232,29 +187,34 @@ function AddProduct() {
         )}
 
         {error && (
-          <p style={{ color: "red", textAlign: "center", marginBottom: "10px" }}>
-            {error}
-          </p>
+          <p style={{ color: "red", textAlign: "center" }}>{error}</p>
         )}
 
-        {success && (
-          <p style={{ color: "green", textAlign: "center", marginBottom: "10px" }}>
-            {success}
-          </p>
-        )}
-
-
-        <button
-          type="button"
-          className="submit-btn"
-          onClick={handleSubmit}
-        >
+        <button className="submit-btn" onClick={handleSubmit}>
           Sell Item
         </button>
-
-
       </div>
-      {/* WHITE CARD END */}
+
+      {/* ✅ APPROVAL POPUP */}
+      {showApprovalPopup && (
+        <div className="popup-overlay">
+          <div className="popup-card">
+            <h2>⏳ Waiting for Admin Approval</h2>
+            <p>Your product has been submitted successfully.</p>
+            <p>Please wait until admin approves it.</p>
+
+            <button
+              className="ok-btn"
+              onClick={() => {
+                setShowApprovalPopup(false);
+                window.location.href = "/";
+              }}
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

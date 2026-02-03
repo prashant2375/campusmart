@@ -6,24 +6,29 @@ const {
   addProduct,
   getProducts,
   getUserProducts,
+  getPendingProducts,
   approveProduct,
   deleteProduct,
 } = require("../controllers/productController");
 
-const {
-  verifyToken,
-  isAdmin,
-} = require("../middleware/authMiddleware");
+const { verifyToken, isAdmin } = require("../middleware/authMiddleware");
 
-// Multer config
+// =======================
+// MULTER CONFIG
+// =======================
 const storage = multer.diskStorage({
   destination: (req, file, cb) => cb(null, "uploads/"),
   filename: (req, file, cb) =>
     cb(null, Date.now() + "-" + file.originalname),
 });
+
 const upload = multer({ storage });
 
-// Routes
+// =======================
+// ROUTES (ORDER MATTERS)
+// =======================
+
+// ➕ Add product (user)
 router.post(
   "/",
   verifyToken,
@@ -34,9 +39,40 @@ router.post(
   addProduct
 );
 
-router.get("/", getProducts);
-router.get("/mine", verifyToken, getUserProducts);
-router.put("/:id/approve", verifyToken, isAdmin, approveProduct);
-router.delete("/:id", verifyToken, deleteProduct);
+// 🔐 ADMIN: get pending products
+router.get(
+  "/admin/pending",
+  verifyToken,
+  isAdmin,
+  getPendingProducts
+);
+
+// 🔐 ADMIN: approve product
+router.put(
+  "/:id/approve",
+  verifyToken,
+  isAdmin,
+  approveProduct
+);
+
+// 👤 User: delete own product
+router.delete(
+  "/:id",
+  verifyToken,
+  deleteProduct
+);
+
+// 👤 User: own products
+router.get(
+  "/mine",
+  verifyToken,
+  getUserProducts
+);
+
+// 🌍 Public: approved products
+router.get(
+  "/",
+  getProducts
+);
 
 module.exports = router;

@@ -1,12 +1,8 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Auth.css";
-
 import { useAuth } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
 import API from "../api/api";
-
-
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -14,16 +10,14 @@ function Login() {
     password: "",
   });
 
+  const [loginAs, setLoginAs] = useState("user"); // 🔥 NEW
   const [errors, setErrors] = useState({});
 
   const { login } = useAuth();
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const validate = () => {
@@ -45,36 +39,21 @@ function Login() {
     return Object.keys(newErrors).length === 0;
   };
 
-  //Dummy login
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   if (validate()) {
-  //     //temp login before backend
-  //     login({
-  //       email: formData.email,
-  //       role: formData.email === "admin@campus.com" ? "admin" : "user",
-  //     });
-
-  //     navigate("/");
-
-  //     console.log("Login successful:", formData);
-  //     // backend integration later
-  //   }
-  // };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (!validate()) return;
 
     try {
       const res = await API.post("/auth/login", {
         email: formData.email,
         password: formData.password,
+        loginAs, // 🔥 IMPORTANT
       });
 
       login(res.data.token, res.data.user);
-      navigate("/");
+
+      navigate("/", { replace: true });
+
     } catch (err) {
       setErrors({
         general: err.response?.data?.message || "Login failed",
@@ -82,11 +61,31 @@ function Login() {
     }
   };
 
-
   return (
     <div className="auth-container">
       <div className="auth-card">
         <h1>Login</h1>
+
+        {/* 🔥 USER / ADMIN TOGGLE */}
+        <div className="login-type">
+          <label>
+            <input
+              type="radio"
+              checked={loginAs === "user"}
+              onChange={() => setLoginAs("user")}
+            />
+            User
+          </label>
+
+          <label>
+            <input
+              type="radio"
+              checked={loginAs === "admin"}
+              onChange={() => setLoginAs("admin")}
+            />
+            Admin
+          </label>
+        </div>
 
         <form onSubmit={handleSubmit}>
           <div className="form-group">
@@ -116,7 +115,6 @@ function Login() {
               {errors.general}
             </p>
           )}
-
 
           <button className="auth-btn">Login</button>
         </form>

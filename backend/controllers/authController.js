@@ -2,7 +2,9 @@ const db = require("../config/db");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-// Register
+// =======================
+// REGISTER (UNCHANGED)
+// =======================
 exports.register = (req, res) => {
   const { name, email, password } = req.body;
 
@@ -10,7 +12,6 @@ exports.register = (req, res) => {
     return res.status(400).json({ message: "All fields are required" });
   }
 
-  // Checkig if user already exists
   db.query(
     "SELECT * FROM users WHERE email = ?",
     [email],
@@ -29,16 +30,20 @@ exports.register = (req, res) => {
         (err) => {
           if (err) return res.status(500).json(err);
 
-          res.status(201).json({ message: "User registered successfully" });
+          res.status(201).json({
+            message: "User registered successfully",
+          });
         }
       );
     }
   );
 };
 
-// LOGIN
+// =======================
+// LOGIN (FINAL VERSION 🔥)
+// =======================
 exports.login = (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, loginAs = "user" } = req.body; // ✅ DEFAULT
 
   if (!email || !password) {
     return res.status(400).json({ message: "All fields are required" });
@@ -55,12 +60,28 @@ exports.login = (req, res) => {
       }
 
       const user = results[0];
-      const isMatch = await bcrypt.compare(password, user.password);
 
+      // 🔐 PASSWORD CHECK
+      const isMatch = await bcrypt.compare(password, user.password);
       if (!isMatch) {
         return res.status(401).json({ message: "Invalid credentials" });
       }
 
+      // 🔥 ADMIN VERIFICATION
+      if (loginAs === "admin" && user.role !== "admin") {
+        return res.status(403).json({
+          message: "Access denied. You are not an admin.",
+        });
+      }
+
+      // 🔒 PREVENT ADMIN LOGIN AS USER (OPTIONAL UX)
+      if (loginAs === "user" && user.role === "admin") {
+        return res.status(403).json({
+          message: "Admin must login using Admin option",
+        });
+      }
+
+      // 🔑 CREATE JWT
       const token = jwt.sign(
         { id: user.id, role: user.role },
         process.env.JWT_SECRET,

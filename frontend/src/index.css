@@ -198,3 +198,1407 @@ a {
   border-radius: 6px;
   font-size: 14px;
 }
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.popup-box {
+  background: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  width: 320px;
+  text-align: center;
+}
+
+.popup-box h2 {
+  margin-bottom: 10px;
+}
+
+.popup-btn {
+  margin-top: 15px;
+  padding: 8px 20px;
+  border: none;
+  background: #007bff;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.approval-caption {
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  color: #ff9800;
+  font-weight: 500;
+}
+.sell-item-card {
+  border: 2px dashed #aaa;
+  border-radius: 10px;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: #fafafa;
+  transition: 0.3s;
+}
+
+.sell-item-card:hover {
+  background-color: #f0f0f0;
+}
+
+.sell-item-content {
+  text-align: center;
+  color: #555;
+}
+/* 🔹 POPUP BACKGROUND OVERLAY */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.55); /* dark background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+/* 🔹 POPUP CARD */
+.popup-card {
+  background: #ffffff;
+  padding: 30px 35px;
+  border-radius: 14px;
+  width: 90%;
+  max-width: 420px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  animation: popupScale 0.25s ease-out;
+}
+
+/* 🔹 TEXT STYLES */
+.popup-card h2 {
+  margin-bottom: 10px;
+  color: #2c3e50;
+}
+
+.popup-card p {
+  color: #555;
+  margin-bottom: 8px;
+  font-size: 15px;
+}
+
+/* 🔹 OK BUTTON */
+.ok-btn {
+  margin-top: 18px;
+  padding: 10px 26px;
+  background: #4f46e5; /* indigo */
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: background 0.2s ease;
+}
+
+.ok-btn:hover {
+  background: #4338ca;
+}
+
+/* 🔹 POPUP ANIMATION */
+@keyframes popupScale {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ===============================
+   LOST & FOUND LIST LAYOUT
+================================ */
+
+.lostfound-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 20px;
+}
+
+/* CARD */
+.lostfound-card {
+  display: flex;
+  justify-content: space-between;
+  background: #fff;
+  padding: 16px;
+  border-radius: 14px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+  gap: 20px;
+}
+
+/* LEFT */
+.lf-details {
+  flex: 1;
+}
+
+.lf-details h3 {
+  margin: 0 0 6px;
+}
+
+.lf-desc {
+  color: #555;
+  font-size: 14px;
+}
+
+/* STATUS */
+.lf-status {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.lf-status.Lost {
+  background: #ffe5e5;
+  color: #c0392b;
+}
+
+.lf-status.Found {
+  background: #e5fff1;
+  color: #27ae60;
+}
+
+/* RIGHT IMAGE */
+.lf-image img {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .lostfound-card {
+    flex-direction: column-reverse;
+  }
+
+  .lf-image img {
+    width: 100%;
+    height: 200px;
+  }
+}
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal {
+  background: #fff;
+  padding: 24px;
+  width: 420px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+.cancel-btn {
+  background: #ccc;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.modal-overlay {
+  position: fixed;              /* 🔥 MOST IMPORTANT */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.chat-modal {
+  background: #fff;
+  width: 400px;
+  max-width: 90%;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.chat-body {
+  height: 150px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.chat-input {
+  display: flex;
+  gap: 10px;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 8px;
+}
+
+.close-btn {
+  margin-top: 10px;
+}
+.chat-modal {
+  position: relative;
+  background: white;
+  width: 400px;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+/* ❌ ICON */
+.chat-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.chat-body {
+  height: 200px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.chat-msg {
+  margin-bottom: 6px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  max-width: 80%;
+}
+
+.chat-msg.me {
+  background: #d1f4ff;
+  margin-left: auto;
+}
+
+.chat-input {
+  display: flex;
+  gap: 10px;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 8px;
+}
+/* ===== GLOBAL ===== */
+body {
+  background-color: #eef2f7;
+  color: #1f2937;
+  font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+}
+
+/* ===== PAGE ===== */
+.page {
+  padding: 30px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.page h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.page p {
+  color: #4b5563;
+  font-size: 15px;
+}
+
+/* ===== GRID ===== */
+.my-product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 24px;
+}
+
+/* ===== CARD ===== */
+.my-product-card {
+  background: #fdfefe;
+  border-radius: 14px;
+  padding: 18px;
+  border: 1px solid #dde3ea;
+  box-shadow: 0 10px 24px rgba(31, 41, 55, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.25s ease;
+}
+
+.my-product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 36px rgba(31, 41, 55, 0.14);
+}
+
+/* ===== TEXT ===== */
+.my-product-card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.my-product-card p {
+  font-size: 14px;
+  color: #4b5563;
+  margin: 4px 0;
+}
+
+.my-product-card p:nth-child(3) {
+  font-weight: 600;
+  color: #111827;
+}
+
+/* ===== IMAGE ===== */
+.my-product-card img {
+  width: 100%;
+  max-height: 160px;
+  margin-top: 12px;
+  object-fit: cover;
+  border-radius: 10px;
+  background: #e5e7eb;
+}
+
+/* ===== STATUS ===== */
+.approval-caption {
+  margin-top: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #92400e;
+  background: #fef3c7;
+  padding: 6px 12px;
+  border-radius: 999px;
+  display: inline-block;
+}
+
+/* ===== ACTIONS ===== */
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+/* ===== BUTTON BASE ===== */
+.actions button {
+  flex: 1;
+  padding: 10px;
+  border-radius: 9px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+/* ===== EDIT BUTTON ===== */
+.edit-btn {
+  background: linear-gradient(135deg, #0ea5a4, #0891b2);
+  color: #ffffff;
+  box-shadow: 0 6px 14px rgba(14, 165, 164, 0.35);
+}
+
+.edit-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(14, 165, 164, 0.5);
+}
+
+/* ===== DELETE BUTTON ===== */
+.delete-btn {
+  background: linear-gradient(135deg, #e11d48, #be123c);
+  color: #ffffff;
+  box-shadow: 0 6px 14px rgba(225, 29, 72, 0.35);
+}
+
+.delete-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(225, 29, 72, 0.5);
+}
+
+/* ===== EMPTY / LOADING ===== */
+.page > p {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 16px;
+  color: #6b7280;
+}
+/* ===== LOST & FOUND LIST GRID ===== */
+.lostfound-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+  margin-top: 28px;
+}
+
+/* ===== LOST FOUND CARD ===== */
+.lostfound-card {
+  background: #fdfefe;
+  border-radius: 16px;
+  border: 1px solid #d1d5db;
+  box-shadow: 0 12px 28px rgba(31, 41, 55, 0.12);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+}
+
+/* Hover – loud but classy */
+.lostfound-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 22px 44px rgba(31, 41, 55, 0.25);
+}
+
+/* ===== IMAGE ===== */
+.lf-image {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  background: #e5e7eb;
+}
+
+.lf-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.lostfound-card:hover .lf-image img {
+  transform: scale(1.08);
+}
+
+/* ===== DETAILS ===== */
+.lf-details {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.lf-details h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+
+/* ===== STATUS TAG ===== */
+.lf-status {
+  width: fit-content;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 999px;
+  letter-spacing: 0.4px;
+}
+
+/* Lost */
+.lf-status.Lost {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+/* Found */
+.lf-status.Found {
+  background: #dcfce7;
+  color: #166534;
+}
+
+/* ===== TEXT ===== */
+.lf-details p {
+  font-size: 14px;
+  color: #4b5563;
+  margin: 0;
+}
+
+.lf-desc {
+  font-style: italic;
+  color: #6b7280;
+}
+
+/* ===== CONTACT BUTTON ===== */
+.contact-btn {
+  margin-top: 12px;
+  padding: 10px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  color: #f9fafb;
+  background: linear-gradient(135deg, #1f2933, #4b5563);
+  box-shadow: 0 10px 22px rgba(31, 41, 55, 0.4);
+  transition: all 0.25s ease;
+}
+
+.contact-btn:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #374151, #6b7280);
+  box-shadow: 0 18px 36px rgba(31, 41, 55, 0.6);
+}
+
+/* ===== REPORT CARD (TOP CARD) ===== */
+.sell-item-card {
+  background: linear-gradient(135deg, #1f2933, #374151);
+  color: #f9fafb;
+  border-radius: 16px;
+  padding: 26px;
+  margin-top: 20px;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0 14px 32px rgba(31, 41, 55, 0.5);
+  transition: all 0.3s ease;
+}
+
+.sell-item-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 48px rgba(31, 41, 55, 0.7);
+}
+
+.sell-item-card h2 {
+  margin-bottom: 6px;
+}
+
+.sell-item-card p {
+  color: #d1d5db;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .lostfound-list {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
+}
+/* ===== MODAL OVERLAY ===== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* ===== MODAL FORM CARD ===== */
+.modal.product-form {
+  width: 100%;
+  max-width: 520px;
+  background: #fdfefe;
+  border-radius: 18px;
+  padding: 28px 26px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+  animation: popIn 0.35s ease;
+}
+
+/* ===== FORM TITLE ===== */
+.modal.product-form h2 {
+  text-align: center;
+  margin-bottom: 22px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #111827;
+
+}
+
+/* ===== IMAGE PICKER SPACING ===== */
+.modal.product-form .image-picker {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+/* ===== INPUT / SELECT / TEXTAREA ===== */
+.modal.product-form input,
+.modal.product-form select,
+.modal.product-form textarea {
+  width: 100%;
+  margin-bottom: 16px; /* 🔥 spacing fix */
+  padding: 12px 14px;
+  font-size: 14px;
+  border-radius: 10px;
+  border: 1px solid #9ca3af;
+  background: #f9fafb;
+  transition: all 0.25s ease;
+}
+
+/* Focus effect */
+.modal.product-form input:focus,
+.modal.product-form select:focus,
+.modal.product-form textarea:focus {
+  outline: none;
+  border-color: #1f2933;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(31, 41, 55, 0.25);
+}
+
+/* Textarea tweak */
+.modal.product-form textarea {
+  resize: none;
+  min-height: 90px;
+}
+
+/* ===== ERROR TEXT ===== */
+.modal.product-form p[style*="red"] {
+  margin-top: -8px;
+  margin-bottom: 12px;
+  font-size: 13px;
+  text-align: center;
+}
+
+/* ===== ACTION BUTTONS ===== */
+.modal-actions {
+  display: flex;
+  gap: 14px;
+  margin-top: 10px;
+}
+
+/* Submit */
+.modal-actions .submit-btn {
+  flex: 1;
+  padding: 12px;
+  border-radius: 999px;
+  border: none;
+  font-size: 15px;
+  font-weight: 700;
+  color: #f9fafb;
+  cursor: pointer;
+  background: linear-gradient(135deg, #1f2933, #4b5563);
+  box-shadow: 0 12px 28px rgba(31, 41, 55, 0.45);
+  transition: all 0.25s ease;
+}
+
+.modal-actions .submit-btn:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #374151, #6b7280);
+  box-shadow: 0 18px 40px rgba(31, 41, 55, 0.65);
+}
+
+/* Cancel */
+.cancel-btn {
+  flex: 1;
+  padding: 12px;
+  border-radius: 999px;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  background: #e5e7eb;
+  color: #111827;
+  transition: all 0.2s ease;
+}
+
+.cancel-btn:hover {
+  background: #d1d5db;
+}
+
+/* ===== POPUP SMALL MODAL ===== */
+.modal {
+  background: #f9fafb;
+  padding: 24px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* ===== ANIMATION ===== */
+@keyframes popIn {
+  from {
+    transform: scale(0.92);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Overlay */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* Chat Modal */
+.chat-modal {
+  background: #1f2933; /* dark grey */
+  color: #e5e7eb;
+  width: 420px;
+  max-width: 90%;
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Close button */
+.chat-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #9ca3af;
+}
+
+.chat-close:hover {
+  color: #ffffff;
+}
+
+/* Title */
+.chat-modal h3 {
+  text-align: center;
+  margin-bottom: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #f3f4f6;
+}
+
+/* Chat body */
+.chat-body {
+  background: #111827;
+  border-radius: 10px;
+  padding: 14px;
+  height: 260px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Empty text */
+.chat-empty {
+  text-align: center;
+  color: #9ca3af;
+  font-size: 14px;
+}
+
+/* Messages */
+.chat-msg {
+  max-width: 75%;
+  padding: 10px 14px;
+  border-radius: 16px;
+  font-size: 14px;
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+
+/* My message */
+.chat-msg.me {
+  background: #2563eb;
+  color: white;
+  align-self: flex-end;
+  border-bottom-right-radius: 4px;
+}
+
+/* Other message */
+.chat-msg.other {
+  background: #374151;
+  color: #e5e7eb;
+  align-self: flex-start;
+  border-bottom-left-radius: 4px;
+}
+
+/* Input section */
+.chat-input {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+/* Input box */
+.chat-input input {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #374151;
+  background: #111827;
+  color: #f9fafb;
+  outline: none;
+}
+
+.chat-input input::placeholder {
+  color: #9ca3af;
+}
+
+.chat-input input:focus {
+  border-color: #2563eb;
+}
+
+/* Send button */
+.chat-input button {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 0 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+.chat-input button:hover {
+  background: #1d4ed8;
+}
+
+.chatbot-page {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 16px;
+}
+
+/* Card */
+.chatbot-card {
+  width: 420px;
+  max-width: 100%;
+  background: #1f2933;
+  border-radius: 16px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Header */
+.chatbot-header {
+  padding: 18px;
+  background: #111827;
+  border-bottom: 1px solid #374151;
+}
+
+.chatbot-header h3 {
+  margin: 0;
+  color: #f9fafb;
+  font-size: 18px;
+}
+
+.chatbot-header p {
+  margin-top: 4px;
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+/* Chat body */
+.chatbot-body {
+  flex: 1;
+  padding: 14px;
+  background: #0f172a;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Messages */
+.chatbot-msg {
+  max-width: 75%;
+  padding: 10px 14px;
+  border-radius: 14px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.chatbot-msg.user {
+  align-self: flex-end;
+  background: #2563eb;
+  color: white;
+  border-bottom-right-radius: 4px;
+}
+
+.chatbot-msg.bot {
+  align-self: flex-start;
+  background: #374151;
+  color: #e5e7eb;
+  border-bottom-left-radius: 4px;
+}
+
+/* Input */
+.chatbot-input {
+  display: flex;
+  gap: 10px;
+  padding: 14px;
+  background: #111827;
+  border-top: 1px solid #374151;
+}
+
+.chatbot-input input {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #374151;
+  background: #0f172a;
+  color: #f9fafb;
+  outline: none;
+}
+
+.chatbot-input input::placeholder {
+  color: #9ca3af;
+}
+
+.chatbot-input input:focus {
+  border-color: #2563eb;
+}
+
+.chatbot-input button {
+  background: #2563eb;
+  border: none;
+  color: white;
+  padding: 0 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.chatbot-input button:hover {
+  background: #1d4ed8;
+}
+
+.admin-navbar {
+  background: #1e293b;
+  color: white;
+  padding: 14px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.admin-logo {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.admin-navbar ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+.admin-navbar a {
+  color: #cbd5e1;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.admin-navbar a:hover {
+  color: white;
+}
+
+.admin-logout {
+  background: #dc2626;
+  border: none;
+  padding: 8px 14px;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.admin-page {
+  padding: 30px;
+  background: #f8fafc;
+  min-height: 100vh;
+}
+
+.admin-title {
+  font-size: 28px;
+  color: #1e293b;
+}
+
+.admin-subtitle {
+  color: #64748b;
+  margin-bottom: 30px;
+}
+
+.admin-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 25px;
+}
+
+.admin-card {
+  background: white;
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  transition: transform 0.2s;
+}
+
+.admin-card:hover {
+  transform: translateY(-4px);
+}
+
+.product-img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.price {
+  font-weight: 600;
+  color: #2563eb;
+}
+
+.category {
+  font-size: 14px;
+  color: #64748b;
+}
+
+.status {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 13px;
+  margin: 8px 0;
+}
+
+.status.approved {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.status.pending {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.approve-btn {
+  flex: 1;
+  background: #16a34a;
+  color: white;
+  border: none;
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.delete-btn {
+  flex: 1;
+  background: #dc2626;
+  color: white;
+  border: none;
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.approve-btn:hover {
+  background: #15803d;
+}
+
+.delete-btn:hover {
+  background: #b91c1c;
+}
+
+.loading {
+  text-align: center;
+  font-size: 18px;
+}
+/* ===== GLOBAL RESET ===== */
+* {
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ===== PAGE BACKGROUND ===== */
+.auth-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===== CARD ===== */
+.auth-card {
+  background: #ffffff;
+  width: 380px;
+  padding: 30px 28px;
+  border-radius: 14px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.4s ease;
+}
+
+/* ===== TITLE ===== */
+.auth-card h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #2a5298;
+}
+
+/* ===== USER / ADMIN TOGGLE ===== */
+.login-type {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 18px;
+  background: #f1f4f9;
+  border-radius: 10px;
+  padding: 6px;
+}
+
+.login-type label {
+  flex: 1;
+  text-align: center;
+  padding: 8px 0;
+  cursor: pointer;
+  font-weight: 500;
+  color: #555;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.login-type input {
+  display: none;
+}
+
+/* Highlight selected */
+.login-type input:checked + span {
+  background: #2a5298;
+  color: #fff;
+}
+
+/* Alternative way since span isn't used */
+.login-type label:has(input:checked) {
+  background: #2a5298;
+  color: #fff;
+}
+
+/* ===== FORM ===== */
+.form-group {
+  margin-bottom: 14px;
+}
+
+.form-group label {
+  font-size: 14px;
+  color: #444;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.form-group input:focus {
+  border-color: #2a5298;
+}
+
+/* ===== BUTTON ===== */
+.auth-btn {
+  width: 100%;
+  padding: 11px;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.auth-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(42, 82, 152, 0.4);
+}
+
+/* ===== ERROR ===== */
+.error {
+  font-size: 13px;
+  color: #e63946;
+  margin-top: 4px;
+}
+
+/* ===== FOOTER ===== */
+.auth-footer {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 14px;
+  color: #555;
+}
+
+.auth-footer a {
+  color: #2a5298;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.auth-footer a:hover {
+  text-decoration: underline;
+}
+
+/* ===== ANIMATION ===== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.admin-navbar {
+  background-color: #1e1e2f;
+  padding: 12px 20px;
+}
+
+.admin-navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.admin-logo {
+  color: #fff;
+  font-weight: bold;
+}
+
+.admin-nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.admin-nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.admin-nav-links a:hover {
+  text-decoration: underline;
+}
+
+.admin-btn {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.admin-navbar {
+  background: #0f172a; /* dark admin theme */
+  padding: 14px 30px;
+}
+
+.admin-navbar-container {
+  display: flex;
+  align-items: center;
+}
+
+/* LEFT SIDE LOGO */
+.admin-logo {
+  color: #fff;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+/* RIGHT SIDE LINKS */
+.admin-nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin-left: auto;   /* 🔥 PUSH TO RIGHT */
+  gap: 25px;
+}
+
+/* LINKS */
+.admin-nav-links li a {
+  color: #e5e7eb;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.admin-nav-links li a:hover {
+  color: #38bdf8;
+}
+
+/* LOGOUT BUTTON */
+.admin-btn {
+  background: #ef4444;
+  border: none;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.admin-btn:hover {
+  background: #dc2626;
+}
+
+
+
+
+
+
+
